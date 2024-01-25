@@ -1,3 +1,4 @@
+import Post from '@/components/Post'
 import { prisma } from '../lib/prisma'
 
 async function getPosts() {
@@ -10,19 +11,30 @@ async function getPosts() {
 		}
 	})
 
-  return posts
+	return posts
 }
 
 export default async function Home() {
-  const posts = await getPosts()
+	const posts = await getPosts()
 
-  console.log({posts})
+	console.log({ posts })
 
 	return (
 		<main className='min-h-screen'>
 			<h1 className='text-3xl uppercase py-5 px-10 font-semibold'>
 				Feed
 			</h1>
+			{posts.map((post, index) => (
+				<Post
+					key={index}
+					id={post.id}
+					title={post.title}
+					content={post.content}
+					published={post.published}
+					authorId={post.authorId}
+					authorName={post.author?.name}
+				/>
+			))}
 		</main>
 	)
 }
