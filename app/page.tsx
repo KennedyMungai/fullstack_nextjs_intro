@@ -24,17 +24,19 @@ export default async function Home() {
 			<h1 className='text-3xl uppercase py-5 px-10 font-semibold'>
 				Feed
 			</h1>
-			{posts.map((post, index) => (
-				<Post
-					key={index}
-					id={post.id}
-					title={post.title}
-					content={post.content}
-					published={post.published}
-					authorId={post.authorId}
-					authorName={post.author?.name}
-				/>
-			))}
+			<div className='flex flex-wrap'>
+				{posts.map((post, index) => (
+					<Post
+						key={index}
+						id={post.id}
+						title={post.title}
+						content={post.content}
+						published={post.published}
+						authorId={post.authorId}
+						authorName={post.author?.name}
+					/>
+				))}
+			</div>
 		</main>
 	)
 }
