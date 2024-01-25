@@ -18,7 +18,7 @@ const Post = ({
 	title
 }: Props) => {
 	return (
-		<div>
+		<div className='border border-white rounded-md p-5'>
 			<h3>{authorName}</h3>
 			<h4>{title}</h4>
 			<p>{content}</p>
