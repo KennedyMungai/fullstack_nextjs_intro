@@ -1,5 +1,6 @@
 import Post from '@/components/Post'
 import { prisma } from '../lib/prisma'
+import Link from 'next/link'
 
 async function getPosts() {
 	const posts = await prisma.post.findMany({
@@ -24,6 +25,7 @@ export default async function Home() {
 			<h1 className='text-3xl uppercase py-5 px-10 font-semibold'>
 				Feed
 			</h1>
+      <Link href={'/addPost'}>Add A Post</Link>
 			<div className='flex flex-wrap'>
 				{posts.map((post, index) => (
 					<Post
